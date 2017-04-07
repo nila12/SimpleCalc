@@ -24,6 +24,9 @@
 // swiftc ./main.swift
 // ./main
 
+// EXTRA CREDIT
+// can support negative and decimal values
+
 import Foundation
 
 print("Please enter what you would like to calculate, or exit to quit program")
@@ -34,7 +37,7 @@ while true {
     
     var responseArr = response.components(separatedBy: " ")
     
-    var numArr = response.components(separatedBy: " ").flatMap{ Int($0)}
+    var numArr = response.components(separatedBy: " ").flatMap{ Double($0)}
     
     if (responseArr.count > 1) { //listed nums
         
@@ -46,14 +49,14 @@ while true {
             
             var sum = numArr.reduce(0, +)
             
-            print ("Result: \(sum / numArr.count)")
+            print ("Result: \(sum / Double(numArr.count))")
             
         case "fact" :
             if numArr.count > 1 {
                 print("mismatching values and function")
             } else {
                 var sum = 1
-                for index in 2...numArr[0] {
+                for index in 2...Int(numArr[0]) {
                     sum *= index
                 }
                 
@@ -70,9 +73,9 @@ while true {
             break;
         }
         
-        var first = Int.init(response)!
+        var first = Double.init(response)!
         var oper = readLine(strippingNewline: true)!
-        var sec = Int(readLine(strippingNewline: true)!)!
+        var sec = Double(readLine(strippingNewline: true)!)!
         
         switch oper {
         case "+" :
@@ -84,7 +87,7 @@ while true {
         case "*" :
             print("Result: \(first * sec)")
         case "%" :
-            print("Result: \(first % sec)")
+            print("Result: \(first.truncatingRemainder(dividingBy: sec))")
         default :
             print ("invalid operator submitted")
             
