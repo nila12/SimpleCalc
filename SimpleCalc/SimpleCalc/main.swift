@@ -70,9 +70,9 @@ while true {
             break;
         }
         
-        var first = UInt.init(response)!
+        var first = Int.init(response)!
         var oper = readLine(strippingNewline: true)!
-        var sec = UInt(readLine(strippingNewline: true)!)!
+        var sec = Int(readLine(strippingNewline: true)!)!
         
         switch oper {
         case "+" :
